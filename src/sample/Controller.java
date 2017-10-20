@@ -11,6 +11,7 @@ public class Controller {
     private int b;
     private boolean lastBtnOperator = false;
     private boolean fillingB = false;
+    private boolean isSwastika = false;
     private String operator = "+";
 
     private int memory;
@@ -19,10 +20,21 @@ public class Controller {
     public TextField display;
     public Pane pane;
 
-    public void buttonBackSpaceClick(ActionEvent actionEvent) {
+    public void buttonBackSpaceClick() {
+        if (isSwastika) {
+            updateDisplay("You cannot delete this text! Hail Hitler!");
+            return;
+        }
+
         String string = Integer.toString(a);
 
-        string = string.substring(0, string.length() - 1);
+        int length = string.length();
+
+        if (length <= 1) {
+            return;
+        }
+
+        string = string.substring(0, length - 1);
 
         a = Integer.parseInt(string);
 
@@ -47,12 +59,22 @@ public class Controller {
 
         lastBtnOperator = false;
 
+        if (newInt == 1488) {
+            isSwastika = false;
+            pane.setStyle("-fx-background-color: white;");
+        }
+
         updateDisplay(newInt);
 
         log();
     }
 
-    public void buttonClearClick(ActionEvent actionEvent) {
+    public void buttonClearClick() {
+        if (isSwastika) {
+            updateDisplay("You cannot delete this text! Hail Hitler!");
+            return;
+        }
+
         a = 0;
         b = 0;
         fillingB = false;
@@ -61,14 +83,6 @@ public class Controller {
         updateDisplay(0);
 
         log();
-    }
-
-    private int addDigit(int source, int digit) {
-        String string = Integer.toString(source);
-
-        string += digit;
-
-        return Integer.parseInt(string);
     }
 
     private int addDigit(int source, String digit) {
@@ -101,17 +115,27 @@ public class Controller {
         System.out.println("operator is " + operator);
     }
 
-    public void buttonSqrtClick(ActionEvent actionEvent) {
+    public void buttonSqrtClick() {
+        if (isSwastika) {
+            updateDisplay("You cannot delete this text! Hail Hitler!");
+            return;
+        }
+
         double result = Math.sqrt((double) a);
 
         updateDisplay(result);
 
-        a = (int)result;
+        a = (int) result;
 
         log();
     }
 
     public void buttonOperatorClick(ActionEvent actionEvent) {
+        if (isSwastika) {
+            updateDisplay("You cannot delete this text! Hail Hitler!");
+            return;
+        }
+
         Button button = (Button) actionEvent.getSource();
 
         operator = button.getText();
@@ -121,7 +145,12 @@ public class Controller {
         log();
     }
 
-    public void buttonEnterClick(ActionEvent actionEvent) {
+    public void buttonEnterClick() {
+        if (isSwastika) {
+            updateDisplay(1488);
+            return;
+        }
+
         if (lastBtnOperator) {
             return;
         }
@@ -149,7 +178,7 @@ public class Controller {
                 break;
         }
 
-        a = (int)result;
+        a = (int) result;
         b = 0;
         lastBtnOperator = false;
         fillingB = false;
@@ -159,8 +188,47 @@ public class Controller {
         log();
     }
 
-    public void buttonSwastClick(ActionEvent actionEvent) {
+    public void buttonSwastClick() {
         updateDisplay("Hail Hitler!");
         pane.setStyle("-fx-background-color: red;");
+        this.isSwastika = true;
+        a = 0;
+        b = 0;
+        fillingB = false;
+        lastBtnOperator = false;
+    }
+
+    public void buttonMemoryClick(ActionEvent actionEvent) {
+        Button button = (Button) actionEvent.getSource();
+
+        String command = button.getText();
+
+        switch (command) {
+            case "MC":
+                memory = 0;
+                break;
+            case "MR":
+                if (fillingB) {
+                    b = memory;
+                    updateDisplay(memory);
+
+                    break;
+                }
+
+                a = memory;
+                updateDisplay(memory);
+
+                break;
+            case "MS":
+                if (fillingB) {
+                    memory = b;
+                } else {
+                    memory = a;
+                }
+
+                break;
+        }
+
+        log();
     }
 }
