@@ -1,0 +1,84 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.Pane?>
+<GridPane fx:controller="sample.Controller"
+          fx:id="pane"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="35.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <TextField fx:id="display" maxHeight="Infinity" maxWidth="Infinity" prefWidth="200.0" text="0"
+               GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="0"/>
+
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="MC" GridPane.columnIndex="0"
+            GridPane.rowIndex="1" onAction="#buttonBackSpaceClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="MR" GridPane.columnIndex="1"
+            GridPane.rowIndex="1" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="MS" GridPane.columnIndex="2"
+            GridPane.rowIndex="1" onAction="#buttonClearClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="卐" GridPane.columnIndex="3"
+            GridPane.rowIndex="1" onAction="#buttonSwastClick"/>
+
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="⌫" GridPane.columnIndex="0"
+            GridPane.rowIndex="2" onAction="#buttonBackSpaceClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="0" GridPane.columnIndex="1"
+            GridPane.rowIndex="2" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="C" GridPane.columnIndex="2"
+            GridPane.rowIndex="2" onAction="#buttonClearClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="√" GridPane.columnIndex="3"
+            GridPane.rowIndex="2" onAction="#buttonSqrtClick"/>
+
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="7" GridPane.columnIndex="0"
+            GridPane.rowIndex="3" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="8" GridPane.columnIndex="1"
+            GridPane.rowIndex="3" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="9" GridPane.columnIndex="2"
+            GridPane.rowIndex="3" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="/" GridPane.columnIndex="3"
+            GridPane.rowIndex="3" onAction="#buttonOperatorClick"/>
+
+    <Button fx:id="4" maxHeight="Infinity" maxWidth="Infinity" text="4" GridPane.columnIndex="0"
+            GridPane.rowIndex="4" onAction="#buttonDigitClick"/>
+    <Button fx:id="5" maxHeight="Infinity" maxWidth="Infinity" text="5" GridPane.columnIndex="1"
+            GridPane.rowIndex="4" onAction="#buttonDigitClick"/>
+    <Button fx:id="6" maxHeight="Infinity" maxWidth="Infinity" text="6" GridPane.columnIndex="2"
+            GridPane.rowIndex="4" onAction="#buttonDigitClick"/>
+    <Button maxHeight="Infinity" maxWidth="Infinity" text="*" GridPane.columnIndex="3"
+            GridPane.rowIndex="4" onAction="#buttonOperatorClick"/>
+
+    <Button fx:id="1" maxHeight="Infinity" maxWidth="Infinity" text="1" GridPane.columnIndex="0"
+            GridPane.rowIndex="5" onAction="#buttonDigitClick"/>
+    <Button fx:id="2" maxHeight="Infinity" maxWidth="Infinity" text="2" GridPane.columnIndex="1"
+            GridPane.rowIndex="5" onAction="#buttonDigitClick"/>
+    <Button fx:id="3" maxHeight="Infinity" maxWidth="Infinity" text="3" GridPane.columnIndex="2"
+            GridPane.rowIndex="5" onAction="#buttonDigitClick"/>
+    <Button fx:id="buttonMinus" maxHeight="Infinity" maxWidth="Infinity" text="-" GridPane.columnIndex="3"
+            GridPane.rowIndex="5" onAction="#buttonOperatorClick"/>
+
+    <Button fx:id="buttonEnter" maxHeight="Infinity" maxWidth="Infinity" text="=" GridPane.columnIndex="0"
+            GridPane.rowIndex="6" GridPane.columnSpan="3" onAction="#buttonEnterClick"/>
+    <Button fx:id="buttonPlus" maxHeight="Infinity" maxWidth="Infinity" text="+" GridPane.columnIndex="3"
+            GridPane.rowIndex="6" onAction="#buttonOperatorClick"/>
+</GridPane>
